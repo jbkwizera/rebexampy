@@ -1,0 +1,40 @@
+body {
+    width: 70%;
+    margin: auto;
+}
+@media only screen and (max-width: 600px) {
+    body { width: 95%; }
+}
+div > label {
+    display: inline-block;
+    width: 120px;
+}
+div > p {
+    display: inline-block;
+    margin: 0;
+    margin-bottom: 1em;
+}
+form div {
+    margin-bottom: 0;
+}
+
+form ul, form li {
+    display: inline-block;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
