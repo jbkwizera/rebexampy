@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>REB Exam</title>
+        <link rel="stylesheet" href="../static/css/main.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script type="text/javascript" src="../static/js/main.js"></script>
+    </head>
+    <body>
+
+        <h1>View REB Examination Results</h1>
+        <hr>
+        <!--
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+            <ul>
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        {% endwith %}
+        {% block content %}{% endblock %}-->
+        <form action="" method="post" novalidate>
+            {{ form.hidden_tag() }}
+            <p>Please enter your registration details</p>
+            <div>{{ form.level.label }} {{ form.level() }}</div>
+            <div>
+                <label></label>
+                <p>
+                    {% for error in form.level.errors %}
+                        <span style="color: red;">[{{ error }}]</span>
+                    {% endfor %}
+                </p>
+            </div>
+            <div>{{ form.regid.label }} {{ form.regid() }}</div>
+            <div>
+                <label></label>
+                <p>
+                    {% for error in form.regid.errors %}
+                        <span style="color: red;">[{{ error }}]</span>
+                    {% endfor %}
+                </p>
+            </div>
+            <div>{{ form.who.label }} {{ form.who() }}</div>
+            <div>
+                <label></label>
+                <p>
+                    {% for error in form.who.errors %}
+                        <span style="color: red;">[{{ error }}]</span>
+                    {% endfor %}
+                </p>
+            </div>
+            <div class="block">
+                {{ form.submit.label }}
+                {{ form.submit(value="Submit", id="submit-btn") }}
+            </div>
+            <div class="results">
+                {% if not resu %}
+                    <p>No results available</p>
+                {% else %}
+                    <table>
+                        <tr>
+                            <th>Name</th>
+                            <th>{{ resu[0]["candidate_resu"]["courses"][0] }}</th>
+                            <th>{{ resu[0]["candidate_resu"]["courses"][1] }}</th>
+                            <th>{{ resu[0]["candidate_resu"]["courses"][2] }}</th>
+                            <th>{{ resu[0]["candidate_resu"]["courses"][3] }}</th>
+                            <th>{{ resu[0]["candidate_resu"]["courses"][4] }}</th>
+                            <th>Aggregate</th>
+                            <th>Mention</th>
+                            <th>Gender</th>
+                        </tr>
+                        {% for item in resu %}
+                        <tr>
+                            <td>{{ item["candidate_info"]["name"].title()}}</td>
+                            <td>{{ item["candidate_resu"]["grades"][0] }}</td>
+                            <td>{{ item["candidate_resu"]["grades"][1] }}</td>
+                            <td>{{ item["candidate_resu"]["grades"][2] }}</td>
+                            <td>{{ item["candidate_resu"]["grades"][3] }}</td>
+                            <td>{{ item["candidate_resu"]["grades"][4] }}</td>
+                            <td>{{ item["candidate_info"]["aggregate"] }}</td>
+                            <td>{{ item["candidate_info"]["mention"]   }}</td>
+                            <td>{{ item["candidate_info"]["gender"]    }}</td>
+                        </tr>
+                        {% endfor %}
+                    </table>
+                {% endif %}
+            </div>
+        </form>
+        <style media="screen">
+            table {
+                border-collapse: collapse;
+                width: 100%;
+                margin: 2em auto;
+            }
+            td, th {
+                border: 1px solid #dddddd;
+                text-align: left;
+                padding: 8px;
+            }
+            tr:nth-child(even) {
+                background-color: #dddddd;
+            }
+        </style>
+    </body>
+</html>
