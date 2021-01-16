@@ -70,3 +70,6 @@ def fetch_results(level, regid, who, validate_regid, form):
         if not res: break
         ret.append(res)
     return ret
+
+if __name__ == "__main__":
+    app.run(threaded=True, port=5000)
