@@ -1,1 +1,1 @@
-web: gunicorn rebexampy:app
+web: flask translate compile; gunicorn rebexampy:app
