@@ -1,1 +1,1 @@
-web: gunicorn rebexampy:app
+web: gunicorn app:app
