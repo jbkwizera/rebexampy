@@ -63,11 +63,9 @@
                     <table>
                         <tr>
                             <th>Name</th>
-                            <th>{{ resu[0]["candidate_resu"]["courses"][0] }}</th>
-                            <th>{{ resu[0]["candidate_resu"]["courses"][1] }}</th>
-                            <th>{{ resu[0]["candidate_resu"]["courses"][2] }}</th>
-                            <th>{{ resu[0]["candidate_resu"]["courses"][3] }}</th>
-                            <th>{{ resu[0]["candidate_resu"]["courses"][4] }}</th>
+                            {% for i in range(0, resu[0]["candidate_resu"]["courses"]|length) %}
+                            <th>{{ resu[0]["candidate_resu"]["courses"][i] }}</th>
+                            {% endfor %}
                             <th>Aggregate</th>
                             <th>Mention</th>
                             <th>Gender</th>
@@ -75,11 +73,9 @@
                         {% for item in resu %}
                         <tr>
                             <td>{{ item["candidate_info"]["name"].title()}}</td>
-                            <td>{{ item["candidate_resu"]["grades"][0] }}</td>
-                            <td>{{ item["candidate_resu"]["grades"][1] }}</td>
-                            <td>{{ item["candidate_resu"]["grades"][2] }}</td>
-                            <td>{{ item["candidate_resu"]["grades"][3] }}</td>
-                            <td>{{ item["candidate_resu"]["grades"][4] }}</td>
+                            {% for i in range(0, item["candidate_resu"]["grades"]|length) %}
+                            <td>{{ item["candidate_resu"]["grades"][i] }}</td>
+                            {% endfor %}
                             <td>{{ item["candidate_info"]["aggregate"] }}</td>
                             <td>{{ item["candidate_info"]["mention"]   }}</td>
                             <td>{{ item["candidate_info"]["gender"]    }}</td>

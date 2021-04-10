@@ -26,7 +26,10 @@ def index():
         # Fetch all the stuff
         resu = fetch_results(level, regid, who, validate_regid, form)
         if resu:
-            resu = sorted(resu, key=lambda item: int(item["candidate_info"]["aggregate"]), reverse=True)
+            if 'olc' not in regid:
+                resu = sorted(resu, key=lambda item: int(item["candidate_info"]["aggregate"]), reverse=True)
+            else:
+                resu = sorted(resu, key=lambda item: int(item["candidate_info"]["mention"]))
     return render_template("index.html", form=form, resu=resu)
 
 def student_results(level, regid, who, validate_regid):
